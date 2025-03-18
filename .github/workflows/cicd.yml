@@ -27,7 +27,8 @@ jobs:
         run: ls -R  # Helps debug missing files issue
 
       - name: Run tests
-        run: pytest -v --tb=short  # Verbose mode for better debugging
+        run: |
+          pytest -v --tb=short  # Ensure correct pytest execution
 
   build-and-publish:
     needs: build-and-test
