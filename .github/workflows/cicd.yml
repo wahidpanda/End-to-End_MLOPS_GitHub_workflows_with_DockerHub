@@ -23,12 +23,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install flask pytest
 
-      - name: Debug: List Files
-        run: ls -R  # Helps debug missing files issue
-
       - name: Run tests
-        run: |
-          pytest -v --tb=short  # Ensure correct pytest execution
+        run: pytest
 
   build-and-publish:
     needs: build-and-test
@@ -55,4 +51,6 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/flasktest-app:latest
 
       - name: Image digest
-        run: echo "Docker Image Digest: ${{ steps.docker_build.outputs.digest }}"
+        run: echo ${{ steps.docker_build.outputs.digest }}
+
+## modified
