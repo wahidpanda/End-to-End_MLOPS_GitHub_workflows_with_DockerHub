@@ -50,6 +50,10 @@ jobs:
             file: ./Dockerfile  # Explicitly specify the Dockerfile path
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/flasktest-app:latest
+
+      - name: Image digest
+        run: ${{ steps.build-and-publish.outputs.digest }}
+        
         
 
 ## modified
